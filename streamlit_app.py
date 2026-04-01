@@ -12,56 +12,56 @@ st.markdown("""
 <style>
     /* Global Background */
     .stApp {
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        color: white;
+        background: linear-gradient(135deg, #f5f5dc, #fdfbf7, #e6e2d3) !important;
+        color: #333333;
     }
     
     /* Sleek buttons */
     .stButton>button {
         width: 100%;
         border-radius: 30px;
-        background: linear-gradient(90deg, #00c6ff, #0072ff) !important;
-        color: white !important;
+        background: linear-gradient(90deg, #d4a373, #faedcd) !important;
+        color: #333333 !important;
         border: none !important;
-        box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4) !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4) !important;
         transition: all 0.3s ease !important;
         font-weight: 600 !important;
         letter-spacing: 0.5px !important;
     }
     .stButton>button:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 0 6px 20px rgba(0, 114, 255, 0.6) !important;
+        box-shadow: 0 6px 20px rgba(212, 163, 115, 0.6) !important;
     }
     
-    /* Text input glow */
+    /* Text input highlight */
     .stTextInput>div>div>input {
-        background: rgba(255, 255, 255, 0.1) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        color: white !important;
+        background: rgba(255, 255, 255, 0.8) !important;
+        border: 1px solid rgba(212, 163, 115, 0.5) !important;
+        color: #333333 !important;
         border-radius: 10px !important;
         transition: all 0.3s ease !important;
     }
     .stTextInput>div>div>input:focus {
-        border-color: #00c6ff !important;
-        box-shadow: 0 0 10px rgba(0, 198, 255, 0.5) !important;
+        border-color: #d4a373 !important;
+        box-shadow: 0 0 10px rgba(212, 163, 115, 0.5) !important;
     }
     
     /* ID Card in Sidebar */
     .id-card {
-        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+        background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        border: 1px solid rgba(212, 163, 115, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
         padding: 20px;
         margin-top: 20px;
         text-align: center;
-        color: white;
+        color: #333333;
     }
-    .id-card h3 { margin-bottom: 5px; color: #00c6ff; font-weight: 700;}
-    .id-card p { margin: 8px 0; font-size: 0.95rem; color: #e0e0e0; }
-    .id-name { font-weight: 800; font-size: 1.3rem !important; color: #fff !important; letter-spacing: 1px;}
+    .id-card h3 { margin-bottom: 5px; color: #8c5a2b; font-weight: 700;}
+    .id-card p { margin: 8px 0; font-size: 0.95rem; color: #555555; }
+    .id-name { font-weight: 800; font-size: 1.3rem !important; color: #333333 !important; letter-spacing: 1px;}
     
     /* Hide some default elements for cleaner look */
     #MainMenu {visibility: hidden;}
@@ -73,8 +73,8 @@ st.markdown("""
 # Custom Main Header
 st.markdown("""
 <div style="text-align: center; margin-bottom: 40px; margin-top: 20px;">
-    <h1 style="background: -webkit-linear-gradient(45deg, #00c6ff, #0072ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 3.5rem; font-weight: 900; margin-bottom: 0px; padding-bottom: 10px;">🧪 StereoChem</h1>
-    <p style="font-size: 1.2rem; color: #a0aec0; margin-top: -10px; font-weight: 500;">Molecular Stereochemistry Explorer</p>
+    <h1 style="background: -webkit-linear-gradient(45deg, #8c5a2b, #d4a373); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 3.5rem; font-weight: 900; margin-bottom: 0px; padding-bottom: 10px;">🧪 StereoChem</h1>
+    <p style="font-size: 1.2rem; color: #555555; margin-top: -10px; font-weight: 500;">Molecular Stereochemistry Explorer</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -84,7 +84,7 @@ with st.sidebar:
     <div class="id-card">
         <h3>👨‍🎓 Student Profile</h3>
         <p class="id-name">P.G. Dharshan</p>
-        <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;">
+        <hr style="border-color: rgba(0,0,0,0.1); margin: 15px 0;">
         <p><b>Reg No:</b> RA2511026050012</p>
         <p><b>Class/Sec:</b> AIML-A</p>
         <p><b>Year/Sem:</b> I / II</p>
