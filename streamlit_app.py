@@ -12,7 +12,7 @@ st.markdown("""
 <style>
     /* Global Background */
     .stApp {
-        background: linear-gradient(135deg, #f5f5dc, #fdfbf7, #e6e2d3) !important;
+        background: linear-gradient(135deg, #e0c8b0, #ecdac5, #d2b48c) !important;
         color: #5C4033 !important;
     }
     
