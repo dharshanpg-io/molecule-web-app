@@ -13,7 +13,7 @@ st.markdown("""
     /* Global Background */
     .stApp {
         background: linear-gradient(135deg, #f5f5dc, #fdfbf7, #e6e2d3) !important;
-        color: #333333;
+        color: #5C4033 !important;
     }
     
     /* Sleek buttons */
@@ -21,7 +21,7 @@ st.markdown("""
         width: 100%;
         border-radius: 30px;
         background: linear-gradient(90deg, #d4a373, #faedcd) !important;
-        color: #333333 !important;
+        color: #5C4033 !important;
         border: none !important;
         box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4) !important;
         transition: all 0.3s ease !important;
@@ -37,7 +37,7 @@ st.markdown("""
     .stTextInput>div>div>input {
         background: rgba(255, 255, 255, 0.8) !important;
         border: 1px solid rgba(212, 163, 115, 0.5) !important;
-        color: #333333 !important;
+        color: #5C4033 !important;
         border-radius: 10px !important;
         transition: all 0.3s ease !important;
     }
@@ -57,11 +57,11 @@ st.markdown("""
         padding: 20px;
         margin-top: 20px;
         text-align: center;
-        color: #333333;
+        color: #5C4033;
     }
     .id-card h3 { margin-bottom: 5px; color: #8c5a2b; font-weight: 700;}
-    .id-card p { margin: 8px 0; font-size: 0.95rem; color: #555555; }
-    .id-name { font-weight: 800; font-size: 1.3rem !important; color: #333333 !important; letter-spacing: 1px;}
+    .id-card p { margin: 8px 0; font-size: 0.95rem; color: #5C4033; }
+    .id-name { font-weight: 800; font-size: 1.3rem !important; color: #5C4033 !important; letter-spacing: 1px;}
     
     /* Hide some default elements for cleaner look */
     #MainMenu {visibility: hidden;}
@@ -74,7 +74,7 @@ st.markdown("""
 st.markdown("""
 <div style="text-align: center; margin-bottom: 40px; margin-top: 20px;">
     <h1 style="background: -webkit-linear-gradient(45deg, #8c5a2b, #d4a373); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 3.5rem; font-weight: 900; margin-bottom: 0px; padding-bottom: 10px;">🧪 StereoChem</h1>
-    <p style="font-size: 1.2rem; color: #555555; margin-top: -10px; font-weight: 500;">Molecular Stereochemistry Explorer</p>
+    <p style="font-size: 1.2rem; color: #5C4033; margin-top: -10px; font-weight: 500;">Molecular Stereochemistry Explorer</p>
 </div>
 """, unsafe_allow_html=True)
 
