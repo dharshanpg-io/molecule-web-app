@@ -63,6 +63,13 @@ st.markdown("""
     .id-card p { margin: 8px 0; font-size: 0.95rem; color: #5C4033; }
     .id-name { font-weight: 800; font-size: 1.3rem !important; color: #5C4033 !important; letter-spacing: 1px;}
     
+    /* Fix Table and Metric Text Colors */
+    [data-testid="stMetricValue"], [data-testid="stMetricLabel"],
+    [data-testid="stMetricValue"] > div,
+    table, th, td, .stTable, .stDataFrame {
+        color: #5C4033 !important;
+    }
+    
     /* Hide some default elements for cleaner look */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
