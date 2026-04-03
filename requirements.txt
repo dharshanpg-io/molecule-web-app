@@ -2,3 +2,4 @@ flask
 flask-cors
 rdkit
 streamlit
+fpdf2
