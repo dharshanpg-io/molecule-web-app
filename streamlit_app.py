@@ -70,6 +70,15 @@ st.markdown("""
         color: #5C4033 !important;
     }
     
+    /* Labels, Text, and Placeholders */
+    label, label p, .stMarkdown p, [data-testid="stWidgetLabel"] p, .stTextInput label p {
+        color: #5C4033 !important;
+    }
+    ::placeholder {
+        color: #5C4033 !important;
+        opacity: 0.6 !important;
+    }
+    
     /* Hide some default elements for cleaner look */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
