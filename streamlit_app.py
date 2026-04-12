@@ -106,7 +106,7 @@ st.markdown("""
 st.info("💡 **Pro Tip:** This app is fully cloud-native and rendering seamlessly on Streamlit Community Cloud.")
 
 def load_artemisinin():
-    st.session_state.smiles_input = "CC1CCC2C(C(OC(=O)C3C2(C)OOC13C)C)C"
+    st.session_state.smiles_input = "C[C@@H]1CC[C@H]2[C@H](C(=O)O[C@H]3[C@@]24[C@H]1CC[C@](O3)(OO4)C)C"
 
 # Input section
 st.markdown("<h3 style='color: #D4AF37; margin-bottom: 5px;'>🔍 Analyze a Molecule</h3>", unsafe_allow_html=True)
