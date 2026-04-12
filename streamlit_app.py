@@ -12,73 +12,74 @@ st.markdown("""
 <style>
     /* Global Background */
     .stApp {
-        background: linear-gradient(135deg, #e6d3c1, #f2e3d5, #d9be9e) !important;
+        background: linear-gradient(135deg, #4A0E17, #1A0508) !important;
         background-attachment: fixed !important;
+        color: #F8F0E3 !important;
     }
     
     /* Glassmorphism Main Container */
     .block-container {
-        background: rgba(255, 255, 255, 0.25) !important;
+        background: rgba(20, 0, 0, 0.4) !important;
         backdrop-filter: blur(14px) !important;
         -webkit-backdrop-filter: blur(14px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        border: 1px solid rgba(212, 175, 55, 0.3) !important;
         border-radius: 24px !important;
-        box-shadow: 0 10px 40px rgba(92, 64, 51, 0.15) !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
         padding-top: 2rem !important;
         padding-bottom: 3rem !important;
         max-width: 800px !important;
     }
     
-    /* Sleek buttons */
+    /* Sleek buttons (Gold) */
     .stButton>button {
         border-radius: 12px;
-        background: linear-gradient(135deg, #a67b5b, #c49a76) !important;
-        color: #ffffff !important;
+        background: linear-gradient(135deg, #D4AF37, #AA8022) !important;
+        color: #330000 !important;
         border: none !important;
-        box-shadow: 0 4px 15px rgba(166, 123, 91, 0.4) !important;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
         transition: all 0.3s ease !important;
-        font-weight: 700 !important;
+        font-weight: 800 !important;
         letter-spacing: 0.5px !important;
         padding: 0.5rem 1rem !important;
     }
     .stButton>button:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 0 8px 25px rgba(166, 123, 91, 0.6) !important;
-        background: linear-gradient(135deg, #b98e6c, #d5ac88) !important;
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5) !important;
+        background: linear-gradient(135deg, #E5C158, #FFDF00) !important;
     }
     
     /* Text input highlight */
     .stTextInput>div>div>input {
-        background: rgba(255, 255, 255, 0.6) !important;
-        border: 2px solid rgba(166, 123, 91, 0.3) !important;
-        color: #5C4033 !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        border: 2px solid rgba(212, 175, 55, 0.4) !important;
+        color: #F8F0E3 !important;
         border-radius: 12px !important;
         transition: all 0.3s ease !important;
         padding: 0.75rem 1rem !important;
         font-weight: 500 !important;
     }
     .stTextInput>div>div>input:focus {
-        background: rgba(255, 255, 255, 0.9) !important;
-        border-color: #a67b5b !important;
-        box-shadow: 0 0 0 4px rgba(166, 123, 91, 0.15) !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        border-color: #D4AF37 !important;
+        box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2) !important;
     }
     
     /* Fix Table and Metric Text Colors */
     [data-testid="stMetricValue"], [data-testid="stMetricLabel"],
     [data-testid="stMetricValue"] > div,
     table, th, td, .stTable, .stDataFrame {
-        color: #4a332a !important;
+        color: #F8F0E3 !important;
         font-weight: 600 !important;
     }
     
     /* Labels, Text, and Placeholders */
-    label, label p, .stMarkdown p, [data-testid="stWidgetLabel"] p, .stTextInput label p {
-        color: #4a332a !important;
+    label, label p, .stMarkdown p, [data-testid="stWidgetLabel"] p, .stTextInput label p, .stMarkdown h3 {
+        color: #F8F0E3 !important;
         font-weight: 600 !important;
     }
     ::placeholder {
-        color: #8c7365 !important;
-        opacity: 0.8 !important;
+        color: #D4AF37 !important;
+        opacity: 0.6 !important;
     }
     
     /* Hide some default elements for cleaner look */
@@ -92,11 +93,11 @@ st.markdown("""
 # Custom Main Header
 st.markdown("""
 <div style="text-align: center; margin-bottom: 30px; margin-top: 10px;">
-    <div style="display: inline-block; padding: 25px 40px; background: rgba(255,255,255,0.3); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.4);">
-        <h1 style="background: -webkit-linear-gradient(45deg, #8c5a2b, #d4a373); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 4rem; font-weight: 900; margin-bottom: 0px; padding-bottom: 5px; line-height: 1.1;">🧪 StereoChem</h1>
-        <p style="font-size: 1.3rem; color: #5C4033; margin-top: 5px; margin-bottom: 5px; font-weight: 600; letter-spacing: 0.5px;">Molecular Stereochemistry Explorer</p>
-        <hr style="border: none; border-top: 1px solid rgba(140, 90, 43, 0.2); margin: 12px 0;">
-        <p style="font-size: 1.05rem; color: #8c5a2b; font-weight: 800; margin-top: 5px; margin-bottom: 0;">P.G.Dharshan &bull; RA2511026050012 &bull; AIML-A</p>
+    <div style="display: inline-block; padding: 25px 40px; background: rgba(0,0,0,0.3); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); border: 1px solid rgba(212,175,55,0.4);">
+        <h1 style="background: -webkit-linear-gradient(45deg, #FFDF00, #D4AF37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 4rem; font-weight: 900; margin-bottom: 0px; padding-bottom: 5px; line-height: 1.1;">🧪 StereoChem</h1>
+        <p style="font-size: 1.3rem; color: #F8F0E3; margin-top: 5px; margin-bottom: 5px; font-weight: 600; letter-spacing: 0.5px;">Molecular Stereochemistry Explorer</p>
+        <hr style="border: none; border-top: 1px solid rgba(212, 175, 55, 0.3); margin: 12px 0;">
+        <p style="font-size: 1.05rem; color: #D4AF37; font-weight: 800; margin-top: 5px; margin-bottom: 0;">P.G.Dharshan &bull; RA2511026050012 &bull; AIML-A</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -108,7 +109,7 @@ def load_artemisinin():
     st.session_state.smiles_input = "CC1CCC2C(C(OC(=O)C3C2(C)OOC13C)C)C"
 
 # Input section
-st.markdown("<h3 style='color: #613e25; margin-bottom: 5px;'>🔍 Analyze a Molecule</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='color: #D4AF37; margin-bottom: 5px;'>🔍 Analyze a Molecule</h3>", unsafe_allow_html=True)
 col1, col2 = st.columns([3, 1])
 
 with col1:
