@@ -131,10 +131,8 @@ if run_analysis and smiles_to_analyze:
             if mol is None:
                 st.error("❌ Failed to load molecule. Please check your SMILES string.")
             else:
-                # Add Hydrogens and compute 3D/2D coordinates
-                mol = Chem.AddHs(mol)
-                AllChem.EmbedMolecule(mol, randomSeed=42)
-                Chem.AssignStereochemistryFrom3D(mol)
+                # Assign stereochemistry and compute clean 2D coordinates
+                Chem.AssignStereochemistry(mol, cleanIt=True, force=True)
                 AllChem.Compute2DCoords(mol)
                 
                 # Find chiral centers
