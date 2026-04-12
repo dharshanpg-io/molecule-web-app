@@ -3,3 +3,4 @@ flask-cors
 rdkit
 streamlit
 fpdf2
+pubchempy
