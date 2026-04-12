@@ -113,7 +113,7 @@ st.markdown("<h3 style='color: #D4AF37; margin-bottom: 5px;'>🔍 Analyze a Mole
 col1, col2 = st.columns([3, 1])
 
 with col1:
-    smiles_input = st.text_input("Enter SMILES string:", key="smiles_input", placeholder="e.g. C1CCC(C1)C(C)O", label_visibility="collapsed")
+    smiles_input = st.text_input("Enter SMILES or Name:", key="smiles_input", placeholder="e.g. Aspirin or C1CCC(C1)C(C)O", label_visibility="collapsed")
 with col2:
     st.button("✨ Load Artemisinin", on_click=load_artemisinin, use_container_width=True)
 
@@ -125,15 +125,35 @@ if smiles_input and smiles_input.strip() != "":
     run_analysis = True
 
 if run_analysis and smiles_to_analyze:
-    with st.spinner('Analyzing molecule...'):
+    with st.spinner('Fetching from PubChem & Analyzing molecule...'):
         try:
-            mol = Chem.MolFromSmiles(smiles_to_analyze)
+            import pubchempy as pcp
+            import tempfile
+            import os
+            
+            # Identify if input is SMILES or Name
+            test_mol = Chem.MolFromSmiles(smiles_to_analyze)
+            namespace = 'smiles' if test_mol is not None else 'name'
+            
+            with tempfile.NamedTemporaryFile(suffix='.sdf', delete=False) as tmp:
+                tmp_path = tmp.name
+                
+            try:
+                # Download perfectly drawn 2D coordinates from PubChem
+                pcp.download('SDF', tmp_path, smiles_to_analyze, namespace, record_type='2d', overwrite=True)
+                suppl = Chem.SDMolSupplier(tmp_path)
+                mol = next(suppl) if suppl else None
+            except Exception as e:
+                mol = None
+            finally:
+                if os.path.exists(tmp_path):
+                    os.unlink(tmp_path)
+            
             if mol is None:
-                st.error("❌ Failed to load molecule. Please check your SMILES string.")
+                st.error("❌ Failed to load molecule from PubChem. Please check your query.")
             else:
-                # Assign stereochemistry and compute clean 2D coordinates
+                # Assign stereochemistry from structure
                 Chem.AssignStereochemistry(mol, cleanIt=True, force=True)
-                AllChem.Compute2DCoords(mol)
                 
                 # Find chiral centers
                 chiral_centers = Chem.FindMolChiralCenters(mol, includeUnassigned=True)
