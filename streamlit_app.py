@@ -143,8 +143,13 @@ if run_analysis and smiles_to_analyze:
                 pcp.download('SDF', tmp_path, smiles_to_analyze, namespace, record_type='2d', overwrite=True)
                 suppl = Chem.SDMolSupplier(tmp_path)
                 mol = next(suppl) if suppl else None
+                
+                # Fetch compound data for educational segment
+                comp_req = pcp.get_compounds(smiles_to_analyze, namespace)
+                compound_info = comp_req[0] if comp_req else None
             except Exception as e:
                 mol = None
+                compound_info = None
             finally:
                 if os.path.exists(tmp_path):
                     os.unlink(tmp_path)
@@ -194,6 +199,43 @@ if run_analysis and smiles_to_analyze:
                     else:
                         st.info("No chiral centers found in this molecule.")
                         
+                st.markdown("---")
+                st.markdown("<h2 style='text-align: center; color: #D4AF37;'>📚 Educational Dashboard</h2>", unsafe_allow_html=True)
+                
+                # Create tabs for structured learning
+                tab1, tab2, tab3, tab4 = st.tabs(["Compound Info", "Stereochemistry", "Chiral Centers", "R/S Configuration"])
+                
+                with tab1:
+                    if compound_info:
+                        st.markdown(f"**IUPAC Name:** {compound_info.iupac_name}")
+                        st.markdown(f"**Molecular Formula:** {compound_info.molecular_formula}")
+                        st.markdown(f"**Molecular Weight:** {compound_info.molecular_weight} g/mol")
+                        if hasattr(compound_info, 'isomeric_smiles') and compound_info.isomeric_smiles:
+                            st.markdown(f"**Isomeric SMILES:** `{compound_info.isomeric_smiles}`")
+                    else:
+                        st.info("Additional compound information could not be retrieved from PubChem.")
+                
+                with tab2:
+                    st.markdown('''
+                    **Stereochemistry** is a subdiscipline of chemistry that involves the study of the relative spatial arrangement of atoms that form the structure of molecules and their manipulation. 
+                    It focuses on **stereoisomers**, which by definition have the same molecular formula and sequence of bonded atoms but differ in the three-dimensional orientations of their atoms in space.
+                    ''')
+                
+                with tab3:
+                    st.markdown('''
+                    A **Chiral Center** (or stereocenter) is an atom that has four different groups bonded to it in such a manner that it has a non-superimposable mirror image.
+                    In organic molecules, this is almost always a Carbon atom bonded to four uniquely different substituents. Identifying these centers is critical in fields like pharmacology, as different enantiomers of a drug can have vastly different biological effects.
+                    ''')
+                    
+                with tab4:
+                    st.markdown('''
+                    The **R/S Configuration** system (Cahn-Ingold-Prelog priority rules) is the standard nomenclature used to unequivocally name enantiomers based on their 3D structure.
+                    1. Assign priorities to the 4 groups attached to the chiral center based on atomic number (highest atomic number = highest priority).
+                    2. Orient the molecule so that the lowest priority group (usually Hydrogen) is pointing away from you.
+                    3. Determine the sequence of the remaining three priority groups from Highest (1) to Lowest (3).
+                    - If the sequence is **Clockwise**, it is designated **(R)** (from Latin *rectus*, right).
+                    - If the sequence is **Counter-Clockwise**, it's **(S)** (from Latin *sinister*, left).
+                    ''')
 
                         
         except Exception as e:
