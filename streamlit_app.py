@@ -152,16 +152,24 @@ if run_analysis and smiles_to_analyze:
             if mol is None:
                 st.error("❌ Failed to load molecule from PubChem. Please check your query.")
             else:
+                # Remove explicit hydrogens to make the 2D structure clear and uncluttered
+                mol = Chem.RemoveHs(mol)
+                
                 # Assign stereochemistry from structure
                 Chem.AssignStereochemistry(mol, cleanIt=True, force=True)
                 
                 # Find chiral centers
                 chiral_centers = Chem.FindMolChiralCenters(mol, includeUnassigned=True)
+                chiral_atoms = [center[0] for center in chiral_centers]
+                
+                # Mark chiral centers with their atom indices for clarity
+                for atom_idx in chiral_atoms:
+                    atom = mol.GetAtomWithIdx(atom_idx)
+                    atom.SetProp('atomNote', str(atom_idx))
                 
                 # Generate Image
-                chiral_atoms = [center[0] for center in chiral_centers]
                 img = Draw.MolToImage(
-                    mol, 
+                    mol,
                     highlightAtoms=chiral_atoms,
                     size=(600, 600)
                 )
