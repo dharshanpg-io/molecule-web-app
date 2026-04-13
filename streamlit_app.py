@@ -139,6 +139,7 @@ if run_analysis and smiles_to_analyze:
                 tmp_path = tmp.name
                 
             try:
+                import requests
                 # Download perfectly drawn 2D coordinates from PubChem
                 pcp.download('SDF', tmp_path, smiles_to_analyze, namespace, record_type='2d', overwrite=True)
                 suppl = Chem.SDMolSupplier(tmp_path)
@@ -147,9 +148,21 @@ if run_analysis and smiles_to_analyze:
                 # Fetch compound data for educational segment
                 comp_req = pcp.get_compounds(smiles_to_analyze, namespace)
                 compound_info = comp_req[0] if comp_req else None
+                
+                compound_description = ""
+                if compound_info:
+                    desc_res = requests.get(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{compound_info.cid}/description/JSON")
+                    if desc_res.status_code == 200:
+                        desc_data = desc_res.json()
+                        if 'InformationList' in desc_data and 'Information' in desc_data['InformationList']:
+                            for info in desc_data['InformationList']['Information']:
+                                if 'Description' in info:
+                                    compound_description = info['Description']
+                                    break
             except Exception as e:
                 mol = None
                 compound_info = None
+                compound_description = ""
             finally:
                 if os.path.exists(tmp_path):
                     os.unlink(tmp_path)
@@ -207,6 +220,9 @@ if run_analysis and smiles_to_analyze:
                 
                 with tab1:
                     if compound_info:
+                        if compound_description:
+                            st.markdown("### Common Usage & Description")
+                            st.info(compound_description)
                         st.markdown(f"**IUPAC Name:** {compound_info.iupac_name}")
                         st.markdown(f"**Molecular Formula:** {compound_info.molecular_formula}")
                         st.markdown(f"**Molecular Weight:** {compound_info.molecular_weight} g/mol")
